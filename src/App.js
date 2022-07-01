@@ -1,36 +1,20 @@
-import React from 'react'
-import useInterval from './hooks/useInterval'
-import useSearchParam from './hooks/useSearchParams'
+import { SplitScreen } from './SplitScreen';
+
+const LeftHandComponent = ({ name }) => {
+	return <h1 style={{ backgroundColor: 'green' }}>{name}</h1>;
+}
+
+const RightHandComponent = ({ message }) => {
+	return <p style={{ backgroundColor: 'red' }}>{message}!</p>;
+}
 
 function App() {
-  const post = useSearchParam('post');
-
-  const Timer = props => {
-    const [seconds, setSeconds] = React.useState(0);
-    useInterval(() => {
-      setSeconds(seconds + 1);
-    }, 1000);
-
-    return <p>{seconds}</p>;
-  };
-
-  return (
-    <div className="App">
-      {/* {Timer()} */}
-
-      {/* <p>Post param value: {post || 'null'}</p>
-      <button
-        onClick={() =>
-          window.history.pushState({}, '', window.location.pathname + '?post=42')
-        }
-      >
-        View post 42
-      </button>
-      <button onClick={() => window.history.pushState({}, '', window.location.pathname)}>
-        Exit
-      </button> */}
-    </div>
-  );
+	return (
+		<SplitScreen leftWeight={1} rightWeight={3}>
+			<LeftHandComponent name="Shaun" />
+			<RightHandComponent message="Hello" />
+		</SplitScreen>
+	);
 }
 
 export default App;

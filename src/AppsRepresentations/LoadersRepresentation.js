@@ -1,6 +1,7 @@
 import { CurrentUserLoader } from '../Loaders/CurrentUserLoader';
 import { UserLoader } from '../Loaders/UserLoader';
 import { UserInfo } from '../Loaders/components/UserInfo';
+import { ResourceLoader } from '../Loaders/components/ResourceLoader';
 
 function App() {
 	return (
@@ -11,12 +12,13 @@ function App() {
 		<UserLoader userId="123">
 			<UserInfo />
 		</UserLoader>
-		<UserLoader userId="234">
+
+    <ResourceLoader resourceUrl="/users/123" resourceName="user">
 			<UserInfo />
-		</UserLoader>
-		<UserLoader userId="345">
-			<UserInfo />
-		</UserLoader>
+		</ResourceLoader>
+		<ResourceLoader resourceUrl="/products/1234" resourceName="product">
+			<ProductInfo />
+		</ResourceLoader>
 		</>
 	);
 }
